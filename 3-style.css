@@ -120,3 +120,7 @@ body { background: #e8d6ab; }
 .ez-book-hint { margin-top: 18px; font-size: 13px; letter-spacing: .04em; color: #6b5340; font-style: italic; }
 @keyframes ez-float { 0%,100% { transform: translateY(0) rotateY(-6deg) rotateZ(-1deg); } 50% { transform: translateY(-9px) rotateY(4deg) rotateZ(.5deg); } }
 @media (prefers-reduced-motion: reduce) { .ez-book { animation: none; } .ez-book-cover { transition: none; } }
+.ez-wa { display: block; text-align: center; text-decoration: none; box-sizing: border-box; }
+.ez-comp { align-items: center; gap: 48px; } .ez-comp-cover { width: min(300px, 70%); justify-self: center; border-radius: 4px 8px 8px 4px; box-shadow: -6px 0 0 rgba(62,40,25,.35), 14px 18px 34px rgba(62,40,25,.45); transform: rotate(1.5deg); }
+@media (max-width: 760px) { .ez-comp { gap: 24px; } }
+.ez-sand2 > .ez-comp { padding-top: 48px; padding-bottom: 48px; }
