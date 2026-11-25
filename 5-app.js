@@ -16,16 +16,20 @@
     return '<button type="button" class="ez-btn' + (big ? ' is-big' : '') + (inCart ? ' is-done' : '') + '" data-add="' + id + '">' + (inCart ? 'In your cart \u2713' : 'Add to cart \u00b7 ' + money(p.price)) + '</button>';
   };
 
+  var bookHTML = function (kind, cover, alt, sprite) {
+    return '<div class="ez-bookwrap"><button class="ez-book" type="button" data-book="' + kind + '" data-state="0" data-page="0" aria-label="Open the book"><span class="ez-book-pages ez-pg" style="background-image:url(' + sprite + ')"></span><span class="ez-leaf" aria-hidden="true"><span class="ez-pg ez-leaf-front" style="background-image:url(' + sprite + ')"></span><span class="ez-leaf-back"></span></span><span class="ez-book-cover"><img class="ez-cover" src="' + cover + '" alt="' + alt + '"><span class="ez-cover-in" aria-hidden="true"></span></span></button><span class="ez-book-hint">Tap the book to open it</span></div>';
+  };
   function home() {
     var strip = [['3 ways', 'on every line: Arabic, pronunciation, English'], ['12 units', "taxi, market, pharmacy, a friend's home"], ['10 min', 'a day is enough to keep going'], ['1 companion', 'for when you ask "why is it said like this?"']].map(function (x) { return '<div class="ez-strip-item"><strong>' + x[0] + '</strong><span>' + esc(x[1]) + '</span></div>'; }).join('');
     var cards = [['It teaches the Arabic people actually speak', 'Egyptian Arabic is the language of Cairo, Alexandria, the street, the shop and the family table, and of Egyptian films and songs. This book starts there instead of with formal Arabic.'], ['You can start reading before you know the letters', 'Every line has pronunciation in English letters. Begin with that, then look at the Arabic a little more each unit. Part 0 is there when you are ready for the script.'], ['One situation at a time', 'Each unit is a short dialogue you could really have: meeting someone, ordering kushari, haggling, calling a friend. Same parts every time, so you always know where you are.']].map(function (x) { return '<article class="ez-card"><h3>' + esc(x[0]) + '</h3><p>' + esc(x[1]) + '</p></article>'; }).join('');
     var prods = products.map(function (p) {
       return '<article class="ez-product' + (p.id === 'bundle' ? ' is-best' : '') + '">' + (p.id === 'bundle' ? '<span class="ez-badge">Best value</span>' : '') + '<h3>' + esc(p.name) + '</h3><p class="ez-sub">' + esc(p.sub) + '</p><p>' + esc(p.blurb) + '</p><p class="ez-price">' + money(p.price) + (p.was ? '<s>' + money(p.was) + '</s>' : '') + '</p>' + buy(p.id) + '</article>';
     }).join('');
-    return '<section class="ez-hero"><div class="ez-hero-text"><p class="ez-kicker">Egyptian Arabic for beginners</p><div class="ez-title-ar" lang="ar" dir="rtl">\u0625\u0632\u0651\u064a\u0643\u061f</div><h1 class="ez-h1">Ezzayyak?</h1><p class="ez-lead">Your First Steps in Egyptian Arabic. Everyday conversations, written in Arabic script, pronunciation and English.</p><ul class="ez-ticks"><li>Part 0 teaches the letters and sounds</li><li>12 units, each one real situation</li><li>Answers to every practice, in the book</li></ul><div class="ez-buyrow">' + buy('book', true) + '<a class="ez-btn is-ghost is-big" href="#/inside">Look inside</a></div><p class="ez-fine">Digital edition: PDF plus editable Word file.</p></div><div class="ez-hero-art"><button class="ez-book" type="button" aria-label="Open the book and look inside"><span class="ez-book-pages"><img src="45-unit1.jpg" alt=""></span><span class="ez-book-cover"><img class="ez-cover" src="4-frontcover.jpg" alt="Cover of Ezzayyak? Your First Steps in Egyptian Arabic: a turquoise wooden door on a sand-coloured ground, with an ankh"></span></button><span class="ez-book-hint">Tap the book to open it</span></div></section>' +
+    return '<section class="ez-hero"><div class="ez-hero-text"><p class="ez-kicker">Egyptian Arabic for beginners</p><div class="ez-title-ar" lang="ar" dir="rtl">\u0625\u0632\u0651\u064a\u0643\u061f</div><h1 class="ez-h1">Ezzayyak?</h1><p class="ez-lead">Your First Steps in Egyptian Arabic. Everyday conversations, written in Arabic script, pronunciation and English.</p><ul class="ez-ticks"><li>Part 0 teaches the letters and sounds</li><li>12 units, each one real situation</li><li>Answers to every practice, in the book</li></ul><div class="ez-buyrow">' + buy('book', true) + '<a class="ez-btn is-ghost is-big" href="#/inside">Look inside</a></div><p class="ez-fine">Digital edition: PDF plus editable Word file.</p></div><div class="ez-hero-art">' + bookHTML('main', '7-frontcover.jpg', 'Cover of Ezzayyak? Your First Steps in Egyptian Arabic: a turquoise wooden door on a sand-coloured ground, with an ankh', '2-pages_main.jpg') + '</div></section>' +
       '<section class="ez-strip">' + strip + '</section>' +
       '<section class="ez-section"><div class="ez-head">' + ankh() + '<h2>Why this book</h2></div><div class="ez-grid3">' + cards + '</div><p class="ez-center"><a class="ez-textlink" href="#/why">Read the full story of why this book \u2192</a></p></section>' +
       '<section class="ez-section ez-dark"><div class="ez-split"><div><p class="ez-kicker is-gold">Inside every unit</p><h2>The same six parts, every time</h2><ol class="ez-steps"><li><b>Dialogue</b> a short scene with two voices</li><li><b>New words</b> in Arabic, pronunciation and English</li><li><b>Language note</b> one small pattern, explained plainly</li><li><b>Culture note</b> what Egyptians expect and why</li><li><b>Practice</b> exercises to try yourself</li><li><b>Answers</b> so you can check</li></ol></div><img class="ez-shot is-tilt" src="45-unit1.jpg" alt="Unit 1 page from the book: a dialogue between Ahmed and Sarah with Arabic, pronunciation and English"></div></section>' +
+      '<section class="ez-section ez-sand2"><div class="ez-split ez-comp">' + bookHTML('comp', '1-gccover.jpg', 'Cover of Grammar: The Companion to Ezzayyak?, with the Arabic title and the same turquoise door', '4-pages_comp.jpg') + '<div><p class="ez-kicker">The second book</p><h2>Grammar, the Companion to Ezzayyak?</h2><p class="ez-lead is-dark">Short rules, clear tables, and real examples from the units. Open it when a sentence surprises you and you want to know why it is said that way.</p><ul class="ez-ticks"><li>One chapter for each pattern, with a table and everyday examples</li><li>A one-box quick sheet for every chapter</li><li>Questions with answers</li></ul><div class="ez-buyrow">' + buy('grammar', true) + '<a class="ez-btn is-ghost is-big" href="#/inside">See what is inside</a></div></div></div></section>' +
       '<section class="ez-section"><div class="ez-head">' + ankh() + '<h2>Choose your edition</h2></div><div class="ez-grid3">' + prods + '</div></section>';
   }
   function inside() {
@@ -42,13 +46,13 @@
     var lines = products.filter(function (p) { return cart.indexOf(p.id) > -1; });
     var total = lines.reduce(function (s, p) { return s + p.price; }, 0);
     var list = lines.length === 0 ? '<p class="ez-fine">Your cart is empty.</p>' : '<ul>' + lines.map(function (p) { return '<li><span>' + esc(p.name) + '</span><b>' + money(p.price) + '</b><button type="button" class="ez-link" data-remove="' + p.id + '">Remove</button></li>'; }).join('') + '</ul>';
-    return '<aside class="ez-cart" aria-label="Your cart"><div class="ez-cart-top"><h3>Your cart</h3><button type="button" class="ez-x" data-close aria-label="Close cart">\u00d7</button></div>' + list + '<div class="ez-total"><span>Total</span><b>' + money(total) + '</b></div>' + (lines.length ? '<a class="ez-btn is-big ez-wa" target="_blank" rel="noopener" href="https://wa.me/201002809232?text=' + encodeURIComponent('Hello, I would like to order: ' + lines.map(function (p) { return p.name; }).join(' + ') + '. Please tell me how to pay.') + '">Order on WhatsApp</a>' : '<button type="button" class="ez-btn is-big" disabled>Add a book to order</button>') + '<p class="ez-fine">For now, orders and payment are arranged with the author on WhatsApp. Prices are placeholders until launch.</p></aside>';
+    return '<aside class="ez-cart" aria-label="Your cart"><div class="ez-cart-top"><h3>Your cart</h3><button type="button" class="ez-x" data-close aria-label="Close cart">\u00d7</button></div>' + list + '<div class="ez-total"><span>Total</span><b>' + money(total) + '</b></div>' + (lines.length ? '<a class="ez-btn is-big ez-wa" target="_blank" rel="noopener" href="https://wa.me/201002809232?text=' + encodeURIComponent('Hello, I would like to order: ' + lines.map(function (p) { return p.name; }).join(' + ') + '. Please tell me how to pay.') + '">Order on WhatsApp</a>' : '<button type="button" class="ez-btn is-big" disabled>Add a book to order</button>') + '<p class="ez-fine">For now, orders and payment are arranged with the author on WhatsApp.</p></aside>';
   }
   function render() {
     var route = (location.hash || '#/').replace('#', '') || '/';
     var page = route === '/inside' ? inside() : route === '/why' ? why() : home();
     var nav = function (r, t) { return '<a href="#' + r + '"' + (route === r || (r === '/' && route !== '/inside' && route !== '/why') ? ' aria-current="page"' : '') + '>' + t + '</a>'; };
-    document.getElementById('app').innerHTML = '<div class="ez-banner">Preview of the store \u00b7 Prices are placeholders</div><header class="ez-nav"><a href="#/" class="ez-brand">' + ankh(16) + '<span>Ezzayyak?</span></a><nav>' + nav('/', 'Store') + nav('/inside', 'Look inside') + nav('/why', 'Why this book') + '</nav><button type="button" class="ez-cartbtn" data-cart>Cart (' + cart.length + ')</button></header>' + (open ? cartPanel() : '') + '<main>' + page + '</main><footer class="ez-foot">' + ankh(18) + '<p><b>Ezzayyak?</b> Your First Steps in Egyptian Arabic</p><p class="ez-fine">Everyday conversations \u00b7 Script \u00b7 Pronunciation \u00b7 English</p></footer>';
+    document.getElementById('app').innerHTML = '<header class="ez-nav"><a href="#/" class="ez-brand">' + ankh(16) + '<span>Ezzayyak?</span></a><nav>' + nav('/', 'Store') + nav('/inside', 'Look inside') + nav('/why', 'Why this book') + '</nav><button type="button" class="ez-cartbtn" data-cart>Cart (' + cart.length + ')</button></header>' + (open ? cartPanel() : '') + '<main>' + page + '</main><footer class="ez-foot">' + ankh(18) + '<p><b>Ezzayyak?</b> Your First Steps in Egyptian Arabic</p><p class="ez-fine">Everyday conversations \u00b7 Script \u00b7 Pronunciation \u00b7 English</p></footer>';
   }
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-add],[data-remove],[data-cart],[data-close]');
@@ -59,11 +63,31 @@
     else if (t.hasAttribute('data-close')) { open = false; }
     render();
   });
-  document.addEventListener('click', function (e) {
+  var hints = ['Tap the book to open it', 'Tap for another page', 'Tap to close the book'];
+document.addEventListener('click', function (e) {
   var b = e.target.closest && e.target.closest('.ez-book');
-  if (!b || b.classList.contains('is-open')) return;
-  b.classList.add('is-open');
-  setTimeout(function () { location.hash = '#/inside'; }, 1100);
+  if (!b || b.getAttribute('data-busy')) return;
+  var st = +b.getAttribute('data-state'), cur = +b.getAttribute('data-page');
+  var pos = function (i) { return ((i % 4) * 100 / 3) + '% ' + (Math.floor(i / 4) * 100) + '%'; };
+  var base = b.querySelector('.ez-book-pages'), leaf = b.querySelector('.ez-leaf'), front = b.querySelector('.ez-leaf-front');
+  var hint = b.parentNode.querySelector('.ez-book-hint');
+  var busy = function (ms) { b.setAttribute('data-busy', '1'); setTimeout(function () { b.removeAttribute('data-busy'); }, ms); };
+  var next = st === 0 ? 1 : st === 1 ? 2 : 0;
+  if (st === 0) {
+    base.style.backgroundPosition = pos(0); b.setAttribute('data-page', '0');
+    b.classList.add('is-open'); busy(1100);
+  } else if (st === 1) {
+    var n = cur; while (n === cur) n = 1 + Math.floor(Math.random() * 7);
+    front.style.backgroundPosition = pos(cur); base.style.backgroundPosition = pos(n);
+    leaf.classList.remove('is-turn'); void leaf.offsetWidth; leaf.classList.add('is-turn');
+    b.setAttribute('data-page', n); busy(1000);
+    setTimeout(function () { leaf.classList.remove('is-turn'); }, 1000);
+  } else {
+    b.classList.remove('is-open'); busy(1100);
+  }
+  b.setAttribute('data-state', next);
+  if (hint) hint.textContent = hints[next];
+  b.setAttribute('aria-label', next === 0 ? 'Open the book' : next === 1 ? 'Show another page' : 'Close the book');
 });
 window.addEventListener('hashchange', function () { open = false; render(); window.scrollTo(0, 0); });
   render();
